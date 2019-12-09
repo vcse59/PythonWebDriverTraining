@@ -28,7 +28,8 @@ class Challenge2(unittest.TestCase):
         lSearchField.send_keys("exotics")
 
         #Finding search button by XPATH
-        lSearchButton = self.driver.find_element_by_xpath("//*[@id=\"search-form\"]/div/div[2]/button")
+        lSearchButton = self.driver.find_element(By.XPATH, "//*[@id=\"search-form\"]/div/div[2]/button")    #Clean way to find the element using XPATH
+        #lSearchButton = self.driver.find_element_by_xpath("//*[@id=\"search-form\"]/div/div[2]/button")
 
         #Click on search button
         lSearchButton.click()
@@ -36,8 +37,7 @@ class Challenge2(unittest.TestCase):
         #Wait 10 seconds implicitly until atleast one row is rendered
         WebDriverWait(self.driver, 30).until(
             EC.presence_of_element_located((By.XPATH,
-                                            "//*[@id=\"serverSideDataTable\"]"
-                                            "/tbody/tr[1]/td[3]/div/button[1]")))
+                                            "//*[@id=\"serverSideDataTable\"]/tbody/tr[1]")))
 
         #Retrieving HTML source code
         lCompleteHtmlText = self.driver.page_source
