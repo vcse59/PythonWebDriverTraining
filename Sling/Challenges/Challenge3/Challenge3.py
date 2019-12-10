@@ -22,21 +22,39 @@ class Challenge2(unittest.TestCase):
         self.assertIn("Copart", self.driver.title)
 
         #Display Makes/Models
-        print("\n\nList of Makes/Models")
+        print("\n\nList of Makes/Models Using For Loop")
         print("=======================================================================")
-        self.ParseWebElementDataByXPath("//*[@id=\"tabTrending\"]/div[1]/div[2]//*/a")
+        self.ParseWebElementDataByXPathUsingForLoop("//*[@id=\"tabTrending\"]/div[1]/div[2]//*/a")
+
+        print("\n\nList of Makes/Models Using While Loop")
+        print("=======================================================================")
+        self.ParseWebElementDataByXPathUsingWhileLoop("//*[@id=\"tabTrending\"]/div[1]/div[2]//*/a")
 
         #Display Categories
-        print("\n\nList of Popular Categories")
+        print("\n\nList of Popular Categories Using For Loop")
         print("=======================================================================")
-        self.ParseWebElementDataByXPath("//*[@id=\"tabTrending\"]/div[3]//*/a")
+        self.ParseWebElementDataByXPathUsingForLoop("//*[@id=\"tabTrending\"]/div[3]//*/a")
+        print("\n\nList of Popular Categories Using While Loop")
+        print("=======================================================================")
+        self.ParseWebElementDataByXPathUsingWhileLoop("//*[@id=\"tabTrending\"]/div[3]//*/a")
 
-    def ParseWebElementDataByXPath(self, pXPath):
+    def ParseWebElementDataByXPathUsingForLoop(self, pXPath):
 
         # Retrieve WebElement using XPath
         lElementList    =   self.driver.find_elements(By.XPATH, pXPath)
 
         for lAnchor in lElementList :
+            #Retrieve the href attribute value
+            lAnchorUrl  =   lAnchor.get_attribute("href")
+            print("%s %s" %(lAnchor.text, lAnchorUrl))
+
+    def ParseWebElementDataByXPathUsingWhileLoop(self, pXPath):
+
+        # Retrieve WebElement using XPath
+        lElementList    =   self.driver.find_elements(By.XPATH, pXPath)
+
+        while lElementList:
+            lAnchor =   lElementList.pop(0)
             #Retrieve the href attribute value
             lAnchorUrl  =   lAnchor.get_attribute("href")
             print("%s %s" %(lAnchor.text, lAnchorUrl))
