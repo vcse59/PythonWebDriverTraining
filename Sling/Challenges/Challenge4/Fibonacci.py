@@ -2,6 +2,7 @@ def Fibonacci(FibonacciIndex):
 
     if FibonacciIndex == 0:
         print("Fibonacci index in incorrect")
+        return -1
     elif FibonacciIndex == 1:
         return 0
     elif FibonacciIndex == 2:
