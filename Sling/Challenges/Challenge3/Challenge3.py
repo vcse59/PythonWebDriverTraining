@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class Challenge2(unittest.TestCase):
+class Challenge3(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome("../chromedriver")
